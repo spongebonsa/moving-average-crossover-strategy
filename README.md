@@ -1,30 +1,27 @@
-# moving-average-crossover-strategy
-mac testing if this strategy works
+# Moving Average Crossover Strategy (C++ Backtest)
 
-lets test this with SPY pair 
+This project tests a **moving-average crossover trading strategy** on **SPY (S&P 500 ETF)**.
 
-steps 1: fetch api i guess maybe free ones for now cant afford those fast ones
+## Strategy Rules
 
-download it from ETF or stock trade.
-example: yahoo finance API
-then import it to the code
+- **Buy Signal** → When **Short-Term MA crosses above Long-Term MA**
+- **Sell Signal** → When **Short-Term MA crosses below Long-Term MA**
+- Strategy is **long-only** (only buys, no shorting)
 
-step 2:  Define the backtesting strategy
+## Steps
 
--buy when short term moving average crosses above the long-term moving average
--sell when the short-term moving average crosses below the long-term moving average
+1. **Download Historical Data**
+   - Go to Yahoo Finance → SPY → Export CSV (Adj Close column used)
 
-found this on wikipedia on ma crossover 
+2. **Load Data & Backtest**
+   - Calculates moving averages and applies signals
+   - Computes **Annualized Return & Sharpe Ratio**
 
-step 3: test Different Moving Average combo
+3. **Optimize Strategy**
+   - Tests different MA combinations → Picks best based on **Sharpe Ratio**
 
-iterate through all possible combos and store the results in a dictionary 
+## Compile & Run
 
-step 4 : Find the Optimal strategy
-
-sharpe ratio: is measures the risk-adjusted return of the strategy then find its otpimal strategy
-
-step 5: Interpret results
-not working for now some error in termila but 
-update on the line
-
+```bash
+g++ main.cpp -o backtest
+./backtest
